@@ -73,17 +73,18 @@ class HypervisorStats(OSBase):
         hypervisor_stats = r.json().get('hypervisors', [])
         for stats in hypervisor_stats:
             host = stats['hypervisor_hostname']
+            host_name = host.split('.')[0]
             for k, v in self.VALUE_MAP.iteritems():
                 m_val = stats.get(k, 0)
                 cache_stats.append({
                     'stat_name': v,
                     'stat_value': m_val,
-                    'host': host,
+                    'host': host_name,
                 })
                 total_stats[v] += m_val
                 for agg in nova_aggregates.keys():
                     agg_hosts = nova_aggregates[agg]['hosts']
-                    if host in agg_hosts:
+                    if host_name in agg_hosts:
                         nova_aggregates[agg]['metrics'][v] += m_val
             m_vcpus = stats.get('vcpus', 0)
             m_vcpus_used = stats.get('vcpus_used', 0)
@@ -91,7 +92,7 @@ class HypervisorStats(OSBase):
             cache_stats.append({
                 'stat_name': 'free_vcpus',
                 'stat_value': free,
-                'host': host,
+                'host': host_name,
             })
             total_stats['free_vcpus'] += free
             for agg in nova_aggregates.keys():
