@@ -1,4 +1,4 @@
-FROM          ubuntu:18.04
+FROM          ubuntu:16.04
 LABEL         maintainer="engines-support@switch.ch"
 
 RUN           apt-get -y update \
