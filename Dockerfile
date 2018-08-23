@@ -1,5 +1,5 @@
-FROM          ubuntu:16.04
-MAINTAINER    Rakesh Patnaik (patsrakesh@gmail.com)
+FROM          ubuntu:18.04
+LABEL         maintainer="engines-support@switch.ch"
 
 RUN           apt-get -y update \
               && apt-get -y install curl python-dateutil python-requests python-simplejson python-yaml python-prometheus-client\
