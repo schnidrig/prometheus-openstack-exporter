@@ -56,7 +56,8 @@ class OpenstackExporterHandler(BaseHTTPRequestHandler):
                     stats = collector.get_stats()
                     if stats is not None:
                         output = output + stats
-                except BaseException:
+                except BaseException as e:
+                    logger.error(str(e))
                     logger.warning(
                         "Could not get stats for collector {}".format(
                             collector.get_cache_key()))

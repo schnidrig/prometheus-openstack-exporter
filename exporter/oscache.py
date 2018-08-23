@@ -50,7 +50,7 @@ class OSCache(Thread):
 
     def cache_me(self, osclient):
         self.osclients.append(osclient)
-        logger.debug("new osclient added to cache")
+        logger.debug("new osclient added to cache: {}".format(osclient.get_cache_key()))
 
     def run(self):
         while True:
