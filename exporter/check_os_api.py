@@ -50,7 +50,7 @@ class CheckOSApi(OSBase):
         'contrail_analytics': {'path': '/', 'expect': [200], 'name': 'contrail-analytics-api'},
         'contrail_config': {'path': '/', 'expect': [200], 'name': 'contrail-config-api'},
         'congress': {'path': '/', 'expect': [200], 'name': 'congress-api'},
-        'placement': {'path': '/', 'expect': [401], 'name': 'placement-api'},
+        'placement': {'path': '/placement', 'expect': [401], 'name': 'placement-api'},
     }
 
     def _service_url(self, endpoint, path):
