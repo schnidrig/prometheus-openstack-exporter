@@ -135,7 +135,7 @@ if __name__ == '__main__':
         os_region,
         os_timeout,
         os_retries)
-    oscache = OSCache(os_polling_interval, os_region)
+    oscache = OSCache(os_polling_interval, os_region, osclient)
     collectors.append(oscache)
 
     check_os_api = CheckOSApi(oscache, osclient)
